@@ -33,6 +33,7 @@ class MainPage extends Component {
             if (nextProps.timeout == 0) {
                 //по истечении 15 сек обновляем данные
                 this.props.getData();
+                return false;
             }
         }
 
@@ -66,7 +67,7 @@ class MainPage extends Component {
             <Row
                 name={item.name}
                 volume={item.volume}
-                amount={Math.round(item.price.amount * 100) / 100}
+                amount={(Math.round(item.price.amount * 100) / 100).toFixed(2)}
             />
         );
     }
