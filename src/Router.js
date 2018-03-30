@@ -12,7 +12,7 @@ class RouterComponent extends Component {
                     <Scene
                         key="mainpage"
                         title="Stocks"
-                        titleStyle={ { alignSelf: "center", paddingLeft: 60 } }
+                        titleStyle={ styles.titleStyle }
                         component={MainPage}
                     />
                 </Stack>     
@@ -21,6 +21,22 @@ class RouterComponent extends Component {
     }  
   
 };
+
+const styles = {
+    titleStyle: {
+        ...Platform.select(
+            {
+                ios: {
+                    paddingLeft: 20
+                },
+                android: {
+                    alignSelf: "center",
+                    paddingLeft: 60
+                }
+            }
+        )
+    }
+}
 
 export default RouterComponent;
   
