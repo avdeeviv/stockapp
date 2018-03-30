@@ -60,7 +60,6 @@ class MainPage extends Component {
                     { 
                         rightTitle: 'Refresh',
                         onRight: () => {
-                            //console.log("onRight");
                             this.props.getData();
                         } 
                     }
@@ -123,7 +122,7 @@ class MainPage extends Component {
 
 const styles = {
     headerStyle: {
-        backgroundColor: '#000',
+        backgroundColor: '#080',
     },
     errorStyle: {
         padding: 20,
