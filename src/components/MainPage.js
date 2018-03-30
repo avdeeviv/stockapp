@@ -11,15 +11,25 @@ import { Actions } from 'react-native-router-flux';
 
 class MainPage extends Component {
 
+    _interval = 0;
+
     componentWillMount() {
         this.props.getData();
     }
 
     componentDidMount() {
-        //запускаем отсчет таймера 
-        setInterval(() => {
-            this.props.stepTimeout();
-        }, 1000); 
+        //Запускаем отсчет таймера 
+        this._interval = setInterval(this.tick.bind(this), 1000);
+    }
+
+    componentWillUnmount() {
+        if (this._interval) {
+            clearInterval(this._interval);
+        }
+    }
+
+    tick() {
+        this.props.stepTimeout();
     }
 
     onScroll() {
@@ -130,6 +140,7 @@ const styles = {
 const mapStateToProps = (state) => {
     const { rows, loading, error } = state.dataReducer.data;  
     const { timeout } = state.dataReducer;
+    console.log(timeout);
     return { timeout, rows, loading, error };
 };
 
